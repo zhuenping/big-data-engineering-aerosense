@@ -182,9 +182,9 @@ The architecture detects aberrant values at **two levels**:
 
    ```python
    ANOMALY_CONDITION = (
-       (col("sensor") == "temperature") & (col("value") > 35.0) |
-       (col("sensor") == "humidity")    & (col("value") > 90.0)  |
-       (col("sensor") == "pressure")    & ((col("value") < 990.0) | (col("value") > 1030.0))
+       (col("sensor_type") == "temperature") & (col("value") > 35.0) |
+       (col("sensor_type") == "humidity")    & (col("value") > 90.0)  |
+       (col("sensor_type") == "pressure")    & ((col("value") < 990.0) | (col("value") > 1030.0))
    )
    ```
 

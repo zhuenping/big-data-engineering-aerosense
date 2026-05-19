@@ -107,7 +107,7 @@ docker ps
 # Expected: kafka1, kafka2, kafka3, kafka-ui (4 containers, all healthy)
 ```
 
-Open Kafka UI at: **http://localhost:8090**
+Open Kafka UI at: **http://localhost:8080**
 
 ---
 
@@ -153,7 +153,7 @@ python src/producer.py --count 2000 --rate 50 --source site-A-rack-12
 - Publishes to `sensor-events` with `acks=all` (at-least-once semantics)
 - Message key = sensor type (ordering guarantee per type)
 
-Verify with Kafka UI (**http://localhost:8090**):
+Verify with Kafka UI (**http://localhost:8080**):
 - Topic `sensor-events` should show 2,000+ messages
 
 ---

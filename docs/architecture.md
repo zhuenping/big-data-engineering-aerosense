@@ -105,7 +105,7 @@ processes, stores, and exposes IoT sensor data in real time.
 ### 4. Data Lake (`/tmp/datalake/`)
 | Zone | Format | Partitioning | Purpose |
 |------|--------|-------------|--------|
-| `raw/` | Parquet | ingestion date/hour | Immutable raw JSON archive |
+| `raw/` | JSON | ingestion date/hour | Immutable raw JSON archive |
 | `curated/` | Parquet (Snappy) | sensor_type + event date | Clean, validated, analytics-ready |
 | `consumption/` | Parquet | sensor_type + window year/month | Pre-aggregated KPIs |
 

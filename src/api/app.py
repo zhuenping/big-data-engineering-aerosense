@@ -396,7 +396,7 @@ def docker_status():
             <div><span class="success">abc123456789   kafka1     confluentinc/cp-kafka:7.5.0        Up 2 hours (healthy)      0.0.0.0:19092->19092/tcp</span></div>
             <div><span class="success">def012345678   kafka2     confluentinc/cp-kafka:7.5.0        Up 2 hours (healthy)      0.0.0.0:19094->19094/tcp</span></div>
             <div><span class="success">ghi987654321   kafka3     confluentinc/cp-kafka:7.5.0        Up 2 hours (healthy)      0.0.0.0:19096->19096/tcp</span></div>
-            <div><span class="success">jkl1122334455  kafka-ui   provectuslabs/kafka-ui:latest      Up 2 hours                0.0.0.0:8090->8080/tcp</span></div>
+            <div><span class="success">jkl1122334455  kafka-ui   provectuslabs/kafka-ui:latest      Up 2 hours                0.0.0.0:8080->8080/tcp</span></div>
             <div></div>
             <div><span class="info">4 containers running</span></div>
         </div>
