@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Spark / Hadoop
+metastore_db/
+derby.log
+spark-warehouse/
+.spark-staging/
+
+# Data lake (runtime)
+/tmp/
+
+# Checkpoints (runtime)
+_checkpoints/
+
+# JARs (large files, can be re-downloaded)
+jars/
+
+# WorkBuddy internal
+.workbuddy/
+
+# Generated images (intermediate)
+generated-images/
+
+# macOS resource forks
+._*
+
+# Spark temp files
+*.tmp
+*.crc
+
+# Spark logs HTML
+spark_logs.html
+
+# Environment
+.env
+*.log

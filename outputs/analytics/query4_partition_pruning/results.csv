@@ -1,0 +1,4 @@
+scan_type,record_count,elapsed_seconds
+full_scan,612,0.327
+pruned_scan,203,0.222
+speedup_factor,,1.47
