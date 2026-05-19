@@ -46,7 +46,7 @@ Topic: sensor-events
 **Evidence**: RF=3, all ISRs at full strength (3/3), min.insync.replicas=2.
 
 Screenshot — Kafka UI cluster brokers:
-![Kafka UI Cluster Brokers](outputs/screenshots/02_kafka_ui_cluster_brokers.png)
+![Kafka UI Cluster Brokers](../outputs/screenshots/02_kafka_ui_cluster_brokers.png)
 
 ---
 
@@ -74,7 +74,7 @@ Total: 700 messages (500 new + 200 from previous run)
 ```
 
 Screenshot — Kafka UI showing messages in `sensor-events` topic:
-![Kafka UI Topics](outputs/screenshots/01_kafka_ui_topics.png)
+![Kafka UI Topics](../outputs/screenshots/01_kafka_ui_topics.png)
 
 **Note**: Key-based partitioning by `sensor_type` maps each type to a fixed partition.
 Temperature and pressure both hash to partition 2, humidity to partition 0.
@@ -144,7 +144,7 @@ Temperature and pressure both hash to partition 2, humidity to partition 0.
 **Evidence**: 3-zone data lake successfully populated with Hive-style partitioning.
 
 Screenshot — Spark Structured Streaming pipeline output:
-![Spark Pipeline Output](outputs/screenshots/03_spark_pipeline_output.png)
+![Spark Pipeline Output](../outputs/screenshots/03_spark_pipeline_output.png)
 
 ---
 
@@ -226,7 +226,7 @@ Screenshot — Spark Structured Streaming pipeline output:
 ```
 
 Screenshot — curl API tests:
-![curl API Tests](outputs/screenshots/04_curl_api_tests.png)
+![curl API Tests](../outputs/screenshots/04_curl_api_tests.png)
 
 ---
 
@@ -264,7 +264,7 @@ Partition: 2  Leader: 3  Replicas: 2,3,1  Isr: 3,1,2    ← ISR fully restored
 **Evidence**: Full ISR recovery after broker restart. Data integrity maintained throughout.
 
 Screenshot — Docker containers status (after recovery):
-![Docker Containers Running](outputs/screenshots/05_docker_containers_running.png)
+![Docker Containers Running](../outputs/screenshots/05_docker_containers_running.png)
 
 ---
 
