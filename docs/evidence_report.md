@@ -45,6 +45,9 @@ Topic: sensor-events
 
 **Evidence**: RF=3, all ISRs at full strength (3/3), min.insync.replicas=2.
 
+Screenshot — Kafka UI cluster brokers:
+![Kafka UI Cluster Brokers](outputs/screenshots/02_kafka_ui_cluster_brokers.png)
+
 ---
 
 ## 2. Python Producer (Step 2)
@@ -69,6 +72,9 @@ sensor-events:1:0      (0.0%)
 sensor-events:2:466    (66.6%)
 Total: 700 messages (500 new + 200 from previous run)
 ```
+
+Screenshot — Kafka UI showing messages in `sensor-events` topic:
+![Kafka UI Topics](outputs/screenshots/01_kafka_ui_topics.png)
 
 **Note**: Key-based partitioning by `sensor_type` maps each type to a fixed partition.
 Temperature and pressure both hash to partition 2, humidity to partition 0.
@@ -136,6 +142,9 @@ Temperature and pressure both hash to partition 2, humidity to partition 0.
 ```
 
 **Evidence**: 3-zone data lake successfully populated with Hive-style partitioning.
+
+Screenshot — Spark Structured Streaming pipeline output:
+![Spark Pipeline Output](outputs/screenshots/03_spark_pipeline_output.png)
 
 ---
 
@@ -216,6 +225,9 @@ Temperature and pressure both hash to partition 2, humidity to partition 0.
 2026-05-19 09:31:32 [INFO] werkzeug - Running on http://127.0.0.1:5000
 ```
 
+Screenshot — curl API tests:
+![curl API Tests](outputs/screenshots/04_curl_api_tests.png)
+
 ---
 
 ## 6. Fault Tolerance Test (Step 6)
@@ -250,6 +262,9 @@ Partition: 2  Leader: 3  Replicas: 2,3,1  Isr: 3,1,2    ← ISR fully restored
 ```
 
 **Evidence**: Full ISR recovery after broker restart. Data integrity maintained throughout.
+
+Screenshot — Docker containers status (after recovery):
+![Docker Containers Running](outputs/screenshots/05_docker_containers_running.png)
 
 ---
 
