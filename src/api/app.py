@@ -78,6 +78,23 @@ def json_response(data, status_code: int = 200):
 # Endpoints
 # --------------------------------------------------------------------------- #
 
+@app.route("/", methods=["GET"])
+def index():
+    """Root endpoint — returns API overview and available routes."""
+    return json_response({
+        "service": "AeroSense IoT Sensor Platform API",
+        "version": "1.0.0",
+        "endpoints": {
+            "GET /api/v1/health": "Health check",
+            "GET /api/v1/sensors": "List available sensor types",
+            "GET /api/v1/sensors/<type>/latest": "Latest reading for a sensor type",
+            "GET /api/v1/sensors/<type>/stats?days=N": "Statistics for a sensor type",
+            "GET /api/v1/anomalies?sensor=<type>&limit=N": "Recent anomaly readings",
+            "POST /api/v1/readings": "Ingest a new sensor reading",
+        },
+    }, 200)
+
+
 @app.route("/api/v1/health", methods=["GET"])
 def health_check():
     """Health check endpoint."""
