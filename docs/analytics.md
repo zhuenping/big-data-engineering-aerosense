@@ -119,7 +119,7 @@ docker compose up -d
 python src/producer.py --count 2000 --rate 50 --source site-A-rack-12
 
 # 3. Run the Spark pipeline (let it run for a few minutes)
-spark-submit src/spark_pipeline.py
+spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3 src/spark_pipeline.py
 
 # 4. In another terminal, run analytics
 spark-submit src/analytics.py

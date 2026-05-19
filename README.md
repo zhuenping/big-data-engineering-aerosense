@@ -161,7 +161,7 @@ Verify with Kafka UI (**http://localhost:8090**):
 ### Step 4: Run the Spark Structured Streaming Pipeline
 
 ```bash
-spark-submit src/spark_pipeline.py
+spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3 src/spark_pipeline.py
 ```
 
 **What it does**:
@@ -428,7 +428,7 @@ LASTNAME_FIRSTNAME_exam/
 - [x] `docker compose up -d` starts all 4 containers without errors
 - [x] `sensor-events` topic exists with 3 partitions and RF=3
 - [x] `python src/producer.py --count 2000 --rate 50` sends messages successfully
-- [x] `spark-submit src/spark_pipeline.py` starts the streaming pipeline
+- [x] `spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3 src/spark_pipeline.py` starts the streaming pipeline
 - [x] The three data lake zones contain JSON (raw) + Parquet (curated, consumption) files with Hive-style partitioning
 - [x] `spark-submit src/analytics.py` executes all 4 queries successfully
 - [x] The API responds on `http://localhost:5000/api/v1/health`
