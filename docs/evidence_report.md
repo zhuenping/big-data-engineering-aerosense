@@ -100,20 +100,20 @@ Temperature and pressure both hash to partition 2, humidity to partition 0.
 2026-05-19 09:23:24 [INFO] spark_pipeline - Waiting up to 120 seconds for data processing...
 ```
 
-### 3.2 Data Lake Output — Parquet Files Created
+### 3.2 Data Lake Output — Files Created
 
-**Raw Zone** (partitioned by ingestion_date/hour):
+**Raw Zone** (partitioned by ingestion_date/hour, format: **JSON**):
 ```
 /tmp/datalake/raw/source=kafka/topic=sensor-events/
   ingestion_year=2026/ingestion_month=5/ingestion_day=19/ingestion_hour=8/
-    part-00000-...snappy.parquet
-    part-00001-...snappy.parquet
+    part-00000-...json
+    part-00001-...json
   ingestion_year=2026/ingestion_month=5/ingestion_day=19/ingestion_hour=9/
-    part-00000-...snappy.parquet
-    part-00001-...snappy.parquet
+    part-00000-...json
+    part-00001-...json
 ```
 
-**Curated Zone** (partitioned by sensor_type + event_date):
+**Curated Zone** (partitioned by sensor_type + event_date, format: **Parquet**):
 ```
 /tmp/datalake/curated/domain=iot/
   sensor_type=humidity/event_year=2026/event_month=5/event_day=19/

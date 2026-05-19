@@ -12,6 +12,7 @@ Date: 2024-2025
 
 import logging
 import sys
+import time
 import traceback
 from datetime import datetime, timezone
 
@@ -358,9 +359,10 @@ def run_pipeline() -> None:
         consumption_query.name,
     )
 
-    # Await termination with timeout (for testing)
+    # Wait for streaming queries to process data, then allow graceful stop
     logger.info("Waiting up to 120 seconds for data processing...")
-    spark.streams.awaitAnyTermination(timeout=120)
+    time.sleep(120)
+    spark.streams.awaitAnyTermination()
 
 
 # --------------------------------------------------------------------------- #
