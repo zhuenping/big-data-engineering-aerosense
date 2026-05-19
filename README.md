@@ -218,7 +218,9 @@ outputs/analytics/query4_partition_pruning/
 python src/api/app.py
 ```
 
-API available at: **http://localhost:5000**
+Once the server is running, the API is available at **http://localhost:5000** on your local machine. Open this URL in your browser to see the API overview.
+
+> **Note:** This is a local service — it only works after you run the command above on your own machine. It is not a publicly accessible URL.
 
 #### Test All 6 Endpoints
 
