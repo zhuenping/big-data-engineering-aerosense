@@ -46,6 +46,7 @@ DATA_LAKE_ROOT: str = "/tmp/datalake"
 CURATED_PATH: str = f"{DATA_LAKE_ROOT}/curated/domain=iot"
 
 VALID_SENSORS: set[str] = {"temperature", "humidity", "pressure"}
+VALID_SENSORS_DISPLAY: str = "', '".join(sorted(VALID_SENSORS))
 MAX_DAYS: int = 90
 DEFAULT_LIMIT: int = 50
 
@@ -104,7 +105,7 @@ def get_latest_reading(sensor_type: str):
     """
     if sensor_type not in VALID_SENSORS:
         return json_response({
-            "error": f"Invalid sensor type '{sensor_type}'. Must be one of {sorted(VALID_SENSORS)}.",
+            "error": f"Invalid sensor type '{sensor_type}'. Must be one of: '{VALID_SENSORS_DISPLAY}'.",
         }, 404)
 
     try:
@@ -132,7 +133,7 @@ def get_stats(sensor_type: str):
     """
     if sensor_type not in VALID_SENSORS:
         return json_response({
-            "error": f"Invalid sensor type '{sensor_type}'. Must be one of {sorted(VALID_SENSORS)}.",
+            "error": f"Invalid sensor type '{sensor_type}'. Must be one of: '{VALID_SENSORS_DISPLAY}'.",
         }, 400)
 
     # Parse and validate 'days'
@@ -180,7 +181,7 @@ def list_anomalies():
 
     if sensor_type not in VALID_SENSORS:
         return json_response({
-            "error": f"Invalid sensor type '{sensor_type}'. Must be one of {sorted(VALID_SENSORS)}.",
+            "error": f"Invalid sensor type '{sensor_type}'. Must be one of: '{VALID_SENSORS_DISPLAY}'.",
         }, 400)
 
     limit_str = request.args.get("limit", str(DEFAULT_LIMIT))
@@ -241,7 +242,7 @@ def publish_reading():
     sensor_type = body.get("sensor")
     if sensor_type not in VALID_SENSORS:
         return json_response({
-            "error": f"Invalid sensor type '{sensor_type}'. Must be one of {sorted(VALID_SENSORS)}.",
+            "error": f"Invalid sensor type '{sensor_type}'. Must be one of: '{VALID_SENSORS_DISPLAY}'.",
         }, 422)
 
     try:

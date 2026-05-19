@@ -12,7 +12,8 @@ IoT sensor data. It ingests, processes, stores, and exposes sensor
 readings (temperature, humidity, pressure) from industrial sites.
 
 **Technologies used**: Docker, Apache Kafka (KRaft, 3 brokers),
-Python 3, Apache Spark 3.5 (Structured Streaming), Flask 3, Parquet,
+Python 3, Apache Spark 3.5 (Structured Streaming), Flask 3,
+JSON (raw zone) + Parquet (curated/consumption zones),
 Hive-style partitioning.
 
 ---
@@ -53,7 +54,7 @@ Hive-style partitioning.
 | Ingestion | Python producer + Kafka | Reliable, at-scale event publishing |
 | Message bus | Kafka (3 brokers, KRaft) | Fault-tolerant buffering |
 | Processing | Spark Structured Streaming | Parse, validate, anomaly detection, windowed aggregation |
-| Storage | Local data lake (Parquet) | Three-zone architecture |
+| Storage | Local data lake (raw: JSON, curated/consumption: Parquet) | Three-zone architecture |
 | Exposure | Flask REST API | Programmatic access to latest readings and statistics |
 | Analytics | Spark SQL | Historical queries, partition pruning demonstration |
 
@@ -184,7 +185,7 @@ ls /tmp/datalake/curated/domain=iot/
 ls /tmp/datalake/consumption/use_case=sensor_averages/
 ```
 
-Each should contain `.parquet` files organized in Hive-style partitions.
+Each should contain `.json` (raw zone) or `.parquet` (curated/consumption zones) files organized in Hive-style partitions.
 
 ---
 
@@ -426,7 +427,7 @@ LASTNAME_FIRSTNAME_exam/
 - [x] `sensor-events` topic exists with 3 partitions and RF=3
 - [x] `python src/producer.py --count 2000 --rate 50` sends messages successfully
 - [x] `spark-submit src/spark_pipeline.py` starts the streaming pipeline
-- [x] The three data lake zones contain Parquet files with Hive-style partitioning
+- [x] The three data lake zones contain JSON (raw) + Parquet (curated, consumption) files with Hive-style partitioning
 - [x] `spark-submit src/analytics.py` executes all 4 queries successfully
 - [x] The API responds on `http://localhost:5000/api/v1/health`
 - [x] All 6 endpoints are functional (tested with `tests/test_curl_commands.sh`)
